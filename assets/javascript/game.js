@@ -5,7 +5,7 @@ var wordArr = [];
 var placeholder = [];
 var guessedLetters = [];
 var wrongLetters = [];
-var lives = 9;
+var maxLives = 5;
 var okLetters = ['a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z'];
 
 //function to reset game board
@@ -15,11 +15,12 @@ reset = function() {
     placeholder = [];
     guessedLetters = [];
     wrongLetters = [];
-    lives = 9; 
+    lives = maxLives; 
     
     //reset html elements
     document.getElementById("start").innerHTML = "Guess the word";
     document.getElementById("lives").innerHTML = "Lives: " + lives;
+    document.getElementById("glbank").innerHTML = "Guessed letters:"
     document.getElementById("guessed").innerHTML = wrongLetters.join(" ");
     document.getElementById("message").innerHTML ="";
 
