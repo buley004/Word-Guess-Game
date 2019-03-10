@@ -1,0 +1,55 @@
+h1 {
+    color: white;
+    text-align: center;
+    margin: auto; 
+    padding: 8px;
+}
+
+#head {
+    background-color: black;
+    margin-bottom: 20px;
+}
+
+
+.container {
+    max-width: 860px;
+    background-size: auto;
+}
+
+img {
+    padding-bottom: 50px;
+    max-height: 340px;
+}
+
+#start {
+    background-color: black;
+    color: white;
+    height: 60px;
+}
+
+#start {
+    padding: 0px 5px;
+    border: 2px;
+    border-color: black;
+    border-style: solid;
+}
+
+
+.col-md-6 {
+    border: 2px;
+    border-color: black;
+    border-style: solid;
+    margin: 10px 0px 10px 10px;
+    max-width: 415px;
+    background-color: black;
+    color: white;
+}
+
+.col-md-12 {
+    padding: 0px 10px;
+}
+body {
+    /* background-image: url('http://thewongcouple.com/our-wedding/images/CinemaBackground.jpg'); */
+    background-image: url('../images/CinemaBackground.jpg');
+    background-position: center top; 
+}

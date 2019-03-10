@@ -4,19 +4,37 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Hangman</title>
+    <link rel="stylesheet" type="text/css" href="assets/css/reset.css">  
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="assets/css/style.css">
+    <title>Movie Hangman</title>
 </head>
 <body>
-    <h1>Hangman</h1>
+     
+    <div id="head"><h1>Movie Hangman</h1></div>
 
-    <div id="start">Press any key to get started!</div>
-    <div id="word"></div>
-    <div id="glbank"></div>
-    <div id="guessed"></div>
-    <div id="lives"></div>
-    <div id="wins"></div>
-    <div id="message"></div>
+    <div class="container">
+        <div class="row pt-3">  
+            <div class="col-md-6 centered">
+                <div id="word"></div>
+            </div>
+            <div class="col-md-6"> 
+                <div><span id="glbank"></span><span id="guessed"></span></div>
+                <div id="lives"></div>
+                <div id="wins"></div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12 text-center">
+                <div id="start">Press any key to get started!</div>
+                <img id="clue" src="">
+            </div>
+        </div>
 
+            <div id="message"></div>
+    </div>
+<!-- 
+    <div id="footer">The end</div> -->
     <script type='text/javascript' src="assets/javascript/game.js"></script>
 </body> 
 </html>

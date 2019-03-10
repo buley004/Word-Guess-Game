@@ -1,4 +1,12 @@
-var wordBank = ["pine apple", "straw berry", "ki wi", "ban ana", "gu ava"];
+var wordBank = [{movie: "raising arizona", photo: "assets/images/arizona.jpg"}, 
+    {movie: "super troopers", photo: "assets/images/troops.jpg"}, 
+    {movie: "better off dead", photo: "assets/images/bod.jpg"},
+    {movie: "legend", photo: "assets/images/legend.jpg"},
+    {movie: "zardoz", photo: "assets/images/zardoz.jpg"},
+    {movie: "pineapple express", photo: "assets/images/pe.jpg"},
+    {movie: "michael", photo: "assets/images/michael.jpg"}
+];
+
 var gameOn = false;
 var currentWord = "";
 var wordArr = [];
@@ -7,6 +15,7 @@ var guessedLetters = [];
 var wrongLetters = [];
 var maxLives = 9;
 var wins = 0;
+var rand; 
 var okLetters = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z'];
 
 //function to reset game board
@@ -21,14 +30,18 @@ reset = function () {
     //reset html elements
     document.getElementById("start").innerHTML = "Guess the word";
     document.getElementById("lives").innerHTML = "Lives: " + lives;
-    document.getElementById("glbank").innerHTML = "Guessed letters:"
+    document.getElementById("glbank").innerHTML = "Guessed letters: "
     document.getElementById("guessed").innerHTML = wrongLetters.join(" ");
     document.getElementById("message").innerHTML = "";
     document.getElementById("wins").innerHTML = "Wins: " + wins;
 
-    //Load word
-    currentWord = wordBank[Math.floor(Math.random() * wordBank.length)];
+    document.getElementById("clue").src=wordBank[0].photo; 
+
+    //Load random word and matching clue image
+    rand = Math.floor(Math.random() * wordBank.length);
+    currentWord = wordBank[rand].movie; 
     wordArr = currentWord.split('');
+    document.getElementById("clue").src=wordBank[rand].photo; 
     console.log(wordArr);
 
     //Initialize blank spaces
@@ -89,7 +102,7 @@ document.onkeyup = function (event) {
 
             //display a message if word is fully guessed and end game
             if (placeholder.includes("_") == false) {
-                document.getElementById("message").innerHTML = "Congrats! Press any key to play again"
+                document.getElementById("start").innerHTML = "Congrats! Press any key to play again"
                 wins++;
                 document.getElementById("wins").innerHTML = "Wins: " + wins;
                 gameOn = false;
@@ -97,7 +110,11 @@ document.onkeyup = function (event) {
 
             //display a message if lives are gone and end game
             if (lives == 0) {
-                document.getElementById("message").innerHTML = "You lose! Press any key to play again"
+                document.getElementById("start").innerHTML = "You lose! Press any key to play again"
+                
+                //display correct answer
+                document.getElementById("word").innerHTML = wordArr.join(" ");
+
                 gameOn = false;
             }
         }
