@@ -1,13 +1,21 @@
+@font-face {
+    font-family: 'marquee';
+    src: url('../images/Limelight.ttf');
+}
+
 h1 {
-    color: white;
+    color: #FEFA7F;
     text-align: center;
     margin: auto; 
     padding: 8px;
+    font-family: 'marquee'; 
 }
 
 #head {
     background-color: black;
     margin-bottom: 20px;
+    max-width: 860px;
+    margin: auto; 
 }
 
 
@@ -23,7 +31,7 @@ img {
 
 #start {
     background-color: black;
-    color: white;
+    color: #FEFA7F;
     height: 60px;
 }
 
@@ -34,6 +42,16 @@ img {
     border-style: solid;
 }
 
+#wordcont {
+    position: relative;
+  }
+
+#word {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+  }
+
 
 .col-md-6 {
     border: 2px;
@@ -42,14 +60,13 @@ img {
     margin: 10px 0px 10px 10px;
     max-width: 415px;
     background-color: black;
-    color: white;
+    color: #FEFA7F;
 }
 
 .col-md-12 {
     padding: 0px 10px;
 }
 body {
-    /* background-image: url('http://thewongcouple.com/our-wedding/images/CinemaBackground.jpg'); */
     background-image: url('../images/CinemaBackground.jpg');
     background-position: center top; 
 }

@@ -4,9 +4,17 @@ var wordBank = [{movie: "raising arizona", photo: "assets/images/arizona.jpg"},
     {movie: "legend", photo: "assets/images/legend.jpg"},
     {movie: "zardoz", photo: "assets/images/zardoz.jpg"},
     {movie: "pineapple express", photo: "assets/images/pe.jpg"},
-    {movie: "michael", photo: "assets/images/michael.jpg"}
+    {movie: "michael", photo: "assets/images/michael.jpg"},
+    {movie: "surf ninjas", photo: "assets/images/sn.jpg"},
+    {movie: "fargo", photo: "assets/images/fargo.jpg"},
+    {movie: "kazaam", photo: "assets/images/kazaam.jpg"},
+    {movie: "vampires kiss", photo: "assets/images/vk.jpg"}, 
+    {movie: "mandy", photo: "assets/images/mandy.jpg"},
+    {movie: "pans labyrinth", photo: "assets/images/pl.jpg"},
+    {movie: "the big lebowski", photo: "assets/images/rug.jpg"},
+    {movie: "the royal tenenbaums", photo: "assets/images/rt.jpg"}
 ];
-
+var activeWords = wordBank.slice(0); 
 var gameOn = false;
 var currentWord = "";
 var wordArr = [];
@@ -28,21 +36,25 @@ reset = function () {
     lives = maxLives;
 
     //reset html elements
-    document.getElementById("start").innerHTML = "Guess the word";
+    document.getElementById("start").innerHTML = "Guess this movie!";
     document.getElementById("lives").innerHTML = "Lives: " + lives;
     document.getElementById("glbank").innerHTML = "Guessed letters: "
     document.getElementById("guessed").innerHTML = wrongLetters.join(" ");
     document.getElementById("message").innerHTML = "";
     document.getElementById("wins").innerHTML = "Wins: " + wins;
 
-    document.getElementById("clue").src=wordBank[0].photo; 
+    //reload movies if all have been played
+    if(activeWords.length===0) {
+        activeWords = wordBank.splice(0);
+    }
 
     //Load random word and matching clue image
-    rand = Math.floor(Math.random() * wordBank.length);
-    currentWord = wordBank[rand].movie; 
+    rand = Math.floor(Math.random() * activeWords.length);
+    currentWord = activeWords[rand].movie; 
     wordArr = currentWord.split('');
-    document.getElementById("clue").src=wordBank[rand].photo; 
+    document.getElementById("clue").src=activeWords[rand].photo; 
     console.log(wordArr);
+    console.log(activeWords);
 
     //Initialize blank spaces
     for (var i = 0; i < currentWord.length; i++) {
@@ -57,6 +69,11 @@ reset = function () {
 
     //display word
     document.getElementById("word").innerHTML = placeholder.join(" ");
+
+    //remove movie from actives to prevent repeats 
+    activeWords.splice(rand, 1);
+    console.log("current actives");
+    console.log(activeWords);
 }
 
 // Press any key to start the game 
