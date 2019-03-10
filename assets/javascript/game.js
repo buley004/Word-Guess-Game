@@ -1,28 +1,30 @@
-var wordBank = ["this", "that", "other", "pineapple"];
+var wordBank = ["pine apple", "straw berry", "ki wi", "ban ana", "gu ava"];
 var gameOn = false;
 var currentWord = "";
 var wordArr = [];
 var placeholder = [];
 var guessedLetters = [];
 var wrongLetters = [];
-var maxLives = 5;
-var okLetters = ['a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z'];
+var maxLives = 9;
+var wins = 0;
+var okLetters = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z'];
 
 //function to reset game board
-reset = function() {
+reset = function () {
     //initialize variables
     gameOn = true;
     placeholder = [];
     guessedLetters = [];
     wrongLetters = [];
-    lives = maxLives; 
-    
+    lives = maxLives;
+
     //reset html elements
     document.getElementById("start").innerHTML = "Guess the word";
     document.getElementById("lives").innerHTML = "Lives: " + lives;
     document.getElementById("glbank").innerHTML = "Guessed letters:"
     document.getElementById("guessed").innerHTML = wrongLetters.join(" ");
-    document.getElementById("message").innerHTML ="";
+    document.getElementById("message").innerHTML = "";
+    document.getElementById("wins").innerHTML = "Wins: " + wins;
 
     //Load word
     currentWord = wordBank[Math.floor(Math.random() * wordBank.length)];
@@ -31,7 +33,13 @@ reset = function() {
 
     //Initialize blank spaces
     for (var i = 0; i < currentWord.length; i++) {
-        placeholder.push("_");
+        //allow for spaces in multi-word options
+        if (wordArr[i] === " ") {
+            placeholder.push("&nbsp;");
+        }
+        else {
+            placeholder.push("_");
+        }
     }
 
     //display word
@@ -47,7 +55,7 @@ document.onkeyup = function (event) {
     }
     //check that key is a letter
     else if (okLetters.includes(event.key) == false) {
-        return; 
+        return;
     }
     //main game logic in this else statement
     else {
@@ -59,7 +67,7 @@ document.onkeyup = function (event) {
         else {
             //add letter to guessed array
             guessedLetters.push(event.key);
-            
+
             console.log(guessedLetters);
             console.log(placeholder);
 
@@ -80,13 +88,15 @@ document.onkeyup = function (event) {
             }
 
             //display a message if word is fully guessed and end game
-            if (placeholder.includes("_")==false) {
+            if (placeholder.includes("_") == false) {
                 document.getElementById("message").innerHTML = "Congrats! Press any key to play again"
+                wins++;
+                document.getElementById("wins").innerHTML = "Wins: " + wins;
                 gameOn = false;
             }
 
             //display a message if lives are gone and end game
-            if (lives==0) {
+            if (lives == 0) {
                 document.getElementById("message").innerHTML = "You lose! Press any key to play again"
                 gameOn = false;
             }
