@@ -13,6 +13,7 @@ var wordBank = [{movie: "raising arizona", photo: "assets/images/arizona.jpg"},
     {movie: "pans labyrinth", photo: "assets/images/pl.jpg"},
     {movie: "the big lebowski", photo: "assets/images/rug.jpg"},
     {movie: "the royal tenenbaums", photo: "assets/images/rt.jpg"}
+    {movie: "hot fuzz", photo: "assets/images/hf.jpg"}
 ];
 var activeWords = wordBank.slice(0); 
 var gameOn = false;
@@ -21,7 +22,7 @@ var wordArr = [];
 var placeholder = [];
 var guessedLetters = [];
 var wrongLetters = [];
-var maxLives = 9;
+var maxLives = 5;
 var wins = 0;
 var rand; 
 var okLetters = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z'];
@@ -74,6 +75,9 @@ reset = function () {
     activeWords.splice(rand, 1);
     console.log("current actives");
     console.log(activeWords);
+
+    //play sound reel clip
+    document.getElementById("reel").play();
 }
 
 // Press any key to start the game 
@@ -122,6 +126,9 @@ document.onkeyup = function (event) {
                 document.getElementById("start").innerHTML = "Congrats! Press any key to play again"
                 wins++;
                 document.getElementById("wins").innerHTML = "Wins: " + wins;
+
+                //play sound effect
+                document.getElementById("correct").play();
                 gameOn = false;
             }
 
@@ -131,6 +138,9 @@ document.onkeyup = function (event) {
                 
                 //display correct answer
                 document.getElementById("word").innerHTML = wordArr.join(" ");
+
+                //play sound effect
+                document.getElementById("wrong").play();
 
                 gameOn = false;
             }

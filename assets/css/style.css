@@ -1,6 +1,6 @@
 @font-face {
     font-family: 'marquee';
-    src: url('../images/Limelight.ttf');
+    src: url('../fonts/Limelight.ttf');
 }
 
 h1 {
@@ -9,10 +9,10 @@ h1 {
     margin: auto; 
     padding: 8px;
     font-family: 'marquee'; 
+    font-size: 3rem;
 }
 
 #head {
-    background-color: black;
     margin-bottom: 20px;
     max-width: 860px;
     margin: auto; 
