@@ -1,25 +1,30 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" type="text/css" href="assets/css/reset.css">  
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="assets/css/reset.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" type="text/css" href="assets/css/style.css">
     <title>Movie Hangman</title>
 </head>
+
 <body>
     <!-- sound effects for game -->
     <audio src="assets/sounds/filmreel.wav" id="reel"></audio>
     <audio src="assets/sounds/wrong.wav" id="wrong"></audio>
     <audio src="assets/sounds/correct.wav" id="correct"></audio>
-    
-    <div id="head"><h1>Hangman at the Movies</h1></div>
+
+    <div id="head">
+        <h1>Hangman at the Movies</h1>
+    </div>
 
     <div class="container">
-        <div class="row pt-3">  
-            <div class="col-md-6"> 
+        <div class="row pt-3">
+            <div class="col-md-6">
                 <div><span id="glbank"></span><span id="guessed"></span></div>
                 <div id="lives"></div>
                 <div id="wins"></div>
@@ -27,7 +32,7 @@
             <div class="col-md-6 centered" id="wordcont">
                 <div id="word"></div>
             </div>
-            
+
         </div>
         <div class="row">
             <div class="col-md-12 text-center">
@@ -36,10 +41,11 @@
             </div>
         </div>
 
-            <div id="message"></div>
+        <div id="message"></div>
     </div>
-<!-- 
+    <!-- 
     <div id="footer">The end</div> -->
     <script type='text/javascript' src="assets/javascript/game.js"></script>
-</body> 
+</body>
+
 </html>

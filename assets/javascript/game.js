@@ -12,8 +12,21 @@ var wordBank = [{movie: "raising arizona", photo: "assets/images/arizona.jpg"},
     {movie: "mandy", photo: "assets/images/mandy.jpg"},
     {movie: "pans labyrinth", photo: "assets/images/pl.jpg"},
     {movie: "the big lebowski", photo: "assets/images/rug.jpg"},
-    {movie: "the royal tenenbaums", photo: "assets/images/rt.jpg"}
-    {movie: "hot fuzz", photo: "assets/images/hf.jpg"}
+    {movie: "the royal tenenbaums", photo: "assets/images/rt.jpg"},
+    {movie: "hot fuzz", photo: "assets/images/hf.jpg"},
+    {movie: "apocalypse now", photo: "assets/images/an.jpg"},
+    {movie: "the garbage pail kids movie", photo: "assets/images/gpkm.jpg"},
+    {movie: "the life of brian", photo: "assets/images/lob.jpg"},
+    {movie: "theodore rex", photo: "assets/images/trex.jpg"},
+    {movie: "air bud golden receiver", photo: "assets/images/abgr.jpeg"},
+    {movie: "inherent vice", photo: "assets/images/iv.jpg"},
+    {movie: "walk hard", photo: "assets/images/wh.jpg"},
+    {movie: "the shining", photo: "assets/images/shining.jpg"},
+    {movie: "return to oz", photo: "assets/images/rto.jpg"},
+    {movie: "chicken run", photo: "assets/images/cr.jpg"},
+    {movie: "highlander", photo: "assets/images/hl.jpg"},
+    {movie: "uhf", photo: "assets/images/uhf.jpg"},
+    {movie: "interstellar", photo: "assets/images/interstellar.jpg"}
 ];
 var activeWords = wordBank.slice(0); 
 var gameOn = false;
@@ -111,6 +124,7 @@ document.onkeyup = function (event) {
                 if (event.key == wordArr[i]) {
                     placeholder.splice(i, 1, event.key);
                     document.getElementById("word").innerHTML = placeholder.join(" ");
+                    console.log(placeholder.join());
                 }
             }
             //add wrong letter to wrong letter display and remove a life 
@@ -123,7 +137,7 @@ document.onkeyup = function (event) {
 
             //display a message if word is fully guessed and end game
             if (placeholder.includes("_") == false) {
-                document.getElementById("start").innerHTML = "Congrats! Press any key to play again"
+                document.getElementById("start").innerHTML = "Correct! Press any key to play again"
                 wins++;
                 document.getElementById("wins").innerHTML = "Wins: " + wins;
 
@@ -137,7 +151,13 @@ document.onkeyup = function (event) {
                 document.getElementById("start").innerHTML = "You lose! Press any key to play again"
                 
                 //display correct answer
-                document.getElementById("word").innerHTML = wordArr.join(" ");
+                for(var i=0; i<wordArr.length; i++) {
+                    //keep escaped blank space characters
+                    if(placeholder[i] !== "&nbsp;"){
+                        placeholder.splice(i, 1, wordArr[i]);
+                    }
+                }
+                document.getElementById("word").innerHTML = placeholder.join(" ");
 
                 //play sound effect
                 document.getElementById("wrong").play();
