@@ -1,3 +1,4 @@
+/* load custom font for header */
 @font-face {
     font-family: 'marquee';
     src: url('../fonts/Limelight.ttf');
@@ -18,12 +19,13 @@ h1 {
     margin: auto; 
 }
 
-
+/* fit main content to align with background image */
 .container {
     max-width: 860px;
     background-size: auto;
 }
 
+/* set max size for clue images */
 img {
     padding-bottom: 50px;
     max-height: 340px;
@@ -33,9 +35,6 @@ img {
     background-color: black;
     color: #FEFA7F;
     height: 60px;
-}
-
-#start {
     padding: 0px 5px;
     border: 2px;
     border-color: black;
@@ -51,7 +50,6 @@ img {
     top: 50%;
     transform: translateY(-50%);
   }
-
 
 .col-md-6 {
     border: 2px;
