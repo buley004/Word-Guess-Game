@@ -13,7 +13,7 @@ var wordBank = [
     { movie: "mandy", photo: "assets/images/mandy.jpg" },
     { movie: "pans labyrinth", photo: "assets/images/pl.jpg" },
     { movie: "the big lebowski", photo: "assets/images/rug.jpg" },
-    { movie: "the royal tenenbaums", photo: "assets/images/rt.JPG" },
+    { movie: "the royal tenenbaums", photo: "assets/images/rt.jpg" },
     { movie: "hot fuzz", photo: "assets/images/hf.jpg" },
     { movie: "apocalypse now", photo: "assets/images/an.jpg" },
     { movie: "the garbage pail kids movie", photo: "assets/images/gpkm.jpg" },
