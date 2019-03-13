@@ -29,7 +29,21 @@ var wordBank = [
     { movie: "uhf", photo: "assets/images/uhf.jpg" },
     { movie: "interstellar", photo: "assets/images/interstellar.jpg" },
     { movie: "jumanji", photo: "assets/images/jumanji.jpg" },
-    { movie: "batman returns", photo: "assets/images/br.jpg" }
+    { movie: "batman returns", photo: "assets/images/br.jpg" },
+    { movie: "the happening", photo: "assets/images/hap.jpg" },
+    { movie: "land of the lost", photo: "assets/images/lotl.jpg" },
+    { movie: "shoot em up", photo: "assets/images/seu.jpg" },
+    { movie: "freaks", photo: "assets/images/freaks.jpg" },
+    { movie: "con air", photo: "assets/images/ca.jpg" },
+    { movie: "the road warrior", photo: "assets/images/rw.jpg" },
+    { movie: "the fountain", photo: "assets/images/fountain.jpg" },
+    { movie: "city of god", photo: "assets/images/cog.jpg" },
+    { movie: "tiptoes", photo: "assets/images/tt.jpg" },
+    { movie: "guardians", photo: "assets/images/guardians.png" },
+    { movie: "time bandits", photo: "assets/images/tib.jpg" },
+    { movie: "brazil", photo: "assets/images/brazil.jpg" },
+    { movie: "blue velvet", photo: "assets/images/bv.jpg" },
+    { movie: "jupiter ascending", photo: "assets/images/ja.jpg" }
 ];
 var activeWords = wordBank.slice(0);
 var gameOn = false;
@@ -57,11 +71,13 @@ reset = function () {
     document.getElementById("lives").innerHTML = "Lives: " + lives;
     document.getElementById("glbank").innerHTML = "Guessed letters: "
     document.getElementById("guessed").innerHTML = wrongLetters.join(" ");
-    document.getElementById("message").innerHTML = "";
     document.getElementById("wins").innerHTML = "Wins: " + wins;
 
     //reload movies if all have been played
     if (activeWords.length === 0) {
+        alert("You have played through all of the movies!  Reshuffling the deck...");
+        wins = 0;
+        document.getElementById("wins").innerHTML = "Wins: " + wins;
         activeWords = wordBank.splice(0);
     }
 
@@ -70,8 +86,6 @@ reset = function () {
     currentWord = activeWords[rand].movie;
     wordArr = currentWord.split('');
     document.getElementById("clue").src = activeWords[rand].photo;
-    console.log(wordArr);
-    console.log(activeWords);
 
     //Initialize blank spaces
     for (var i = 0; i < currentWord.length; i++) {
@@ -89,8 +103,6 @@ reset = function () {
 
     //remove movie from actives to prevent repeats 
     activeWords.splice(rand, 1);
-    console.log("current actives");
-    console.log(activeWords);
 
     //play sound reel clip
     document.getElementById("reel").play();
@@ -100,7 +112,7 @@ reset = function () {
 document.onkeyup = function (event) {
 
     var guess = event.key.toLowerCase();
-    
+
     //initialize or reset game if not currently active
     if (gameOn === false) {
         reset();
@@ -113,15 +125,12 @@ document.onkeyup = function (event) {
     else {
         //check if letter has been guessed
         if (guessedLetters.includes(guess)) {
-            alert("that letter has already been guessed");
+            alert("That letter has already been guessed");
         }
         //check if letter is in the word
         else {
             //add letter to guessed array
             guessedLetters.push(guess);
-
-            console.log(guessedLetters);
-            console.log(placeholder);
 
             //compare key letter to word array
             for (var i = 0; i < wordArr.length; i++) {
@@ -129,7 +138,6 @@ document.onkeyup = function (event) {
                 if (guess == wordArr[i]) {
                     placeholder.splice(i, 1, guess);
                     document.getElementById("word").innerHTML = placeholder.join(" ");
-                    console.log(placeholder.join());
                 }
             }
             //add wrong letter to wrong letter display and remove a life 
