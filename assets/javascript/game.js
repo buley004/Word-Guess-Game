@@ -43,7 +43,10 @@ var wordBank = [
     { movie: "time bandits", photo: "assets/images/tib.jpg" },
     { movie: "brazil", photo: "assets/images/brazil.jpg" },
     { movie: "blue velvet", photo: "assets/images/bv.jpg" },
-    { movie: "jupiter ascending", photo: "assets/images/ja.jpg" }
+    { movie: "jupiter ascending", photo: "assets/images/ja.jpg" },
+    { movie: "dirty dancing havana nights", photo: "assets/images/ddhn.jpg"},
+    { movie: "step up", photo: "assets/images/su.jpeg"},
+    { movie: "rent", photo: "assets/images/rent.png"}
 ];
 var activeWords = wordBank.slice(0);
 var gameOn = false;
@@ -125,7 +128,7 @@ document.onkeyup = function (event) {
     else {
         //check if letter has been guessed
         if (guessedLetters.includes(guess)) {
-            alert("That letter has already been guessed");
+            return;
         }
         //check if letter is in the word
         else {
